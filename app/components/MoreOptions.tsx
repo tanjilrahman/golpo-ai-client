@@ -199,7 +199,7 @@ const MoreOptions = ({
                       content: "drop-shadow shadow-black text-white",
                     }}
                   >
-                    Pro
+                    Beta
                   </Chip>
                 </div>
                 <p className="text-tiny text-default-400">
