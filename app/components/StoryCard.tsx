@@ -1,5 +1,5 @@
 import { Story } from "@/types";
-import { Button, Card, CardFooter, Image } from "@nextui-org/react";
+import { Button, Card, CardFooter, CardHeader, Image } from "@nextui-org/react";
 import NextImage from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -8,6 +8,14 @@ function StoryCard({ story }: { story: Story }) {
   return (
     <Link href={`/golpo/${story.id}`}>
       <Card isFooterBlurred className="border-none rounded-3xl">
+        {story.isSuperStory && (
+          <CardHeader className="absolute top-0 right-0 z-20 flex justify-end">
+            <p className="text-xs md:text-sm py-1 rounded-full px-3 font-semibold text-white bg-primary border border-divider">
+              Super
+            </p>
+          </CardHeader>
+        )}
+
         <Image
           isZoomed
           isBlurred

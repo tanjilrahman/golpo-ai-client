@@ -203,7 +203,7 @@ const MoreOptions = ({
                   </Chip>
                 </div>
                 <p className="text-tiny text-default-400">
-                  Get access to new features before they are released.
+                  10-chapter story. Takes longer to generate, around 5min.
                 </p>
               </div>
             </Switch>

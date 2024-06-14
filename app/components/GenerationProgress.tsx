@@ -42,7 +42,7 @@ function GenerationProgress({
             className="w-full md:w-[500px] px-8"
           />
           {isSuperStory && (
-            <p className="font-normal text-xs text-default-600 mt-3 max-w-96 text-center">
+            <p className="font-normal text-xs text-default-600 mt-3 max-w-96 text-center px-4">
               Super story takes longer to generate, you can come back later and
               find it in your library
             </p>
