@@ -6,7 +6,13 @@ import SideBar from "./components/SideBar";
 
 async function Discover() {
   const response = await fetch(
-    process.env.NEXT_PUBLIC_API_URL + "/api/stories/all"
+    process.env.NEXT_PUBLIC_API_URL + "/api/stories/all",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
   );
   const data = await response.json();
   const stories: (Story & Author)[] = data.stories;
