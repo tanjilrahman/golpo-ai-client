@@ -40,6 +40,7 @@ function RegisterModal() {
         onClose={handleOnClose}
         closeButton={<></>}
         scrollBehavior="inside"
+        placement="top"
       >
         <ModalContent className="w-min overflow-hidden">
           {(onClose) => (

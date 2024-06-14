@@ -10,6 +10,7 @@ async function Discover() {
   );
   const data = await response.json();
   const stories: (Story & Author)[] = data.stories;
+  console.log(stories);
 
   if (!data.success) return <p>{data.message}</p>;
 
