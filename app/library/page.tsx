@@ -1,12 +1,18 @@
 import { Author, Story } from "@/types";
+import { cookies } from "next/headers";
 import Image from "next/image";
 import React from "react";
-import StoryCard from "./components/StoryCard";
-import SideBar from "./components/SideBar";
+import SideBar from "../components/SideBar";
+import StoryCard from "../components/StoryCard";
 
-async function Discover() {
+async function Library() {
   const response = await fetch(
-    process.env.NEXT_PUBLIC_API_URL + "/api/stories/all"
+    process.env.NEXT_PUBLIC_API_URL + "/api/stories/library",
+    {
+      headers: {
+        Cookie: cookies().toString(),
+      },
+    }
   );
   const data = await response.json();
   const stories: (Story & Author)[] = data.stories;
@@ -15,13 +21,13 @@ async function Discover() {
 
   return (
     <div className="flex">
-      <SideBar pathname="/" />
+      <SideBar pathname={"/library"} />
       <div className="w-full bg-default-50">
-        <div className="relative z-1 max-w-[62rem] mx-auto text-center mt-16 mb-6 lg:mb-10">
+        <div className="relative z-1 max-w-[62rem] mx-auto text-center mt-16 mb-6 md:mb-10">
           <h1 className="mb-3 md:mb-5 text-3xl md:text-4xl lg:text-5xl font-semibold">
             The{" "}
             <span className="relative inline-block">
-              Storyteller’s
+              Bookworm’s
               <Image
                 src="/curve.png"
                 className="absolute left-0 w-full top-full xl:-mt-2"
@@ -30,13 +36,13 @@ async function Discover() {
                 alt="Curve"
               />
             </span>{" "}
-            Hub
+            Nook
           </h1>
           <p className="max-w-3xl mx-auto mb-4 lg:mb-8 text-lg">
-            Discover Community Creations
+            Find all of your creations
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-4 md:gap-6 lg:gap-8 mb-10 md:grid-cols-3 mx-6 xl:grid-cols-4 md:mx-10">
+        <div className="grid grid-cols-2 gap-4 md:gap-6 lg:gap-8 mb-10 md:grid-cols-3 xl:grid-cols-4 mx-6 md:mx-10">
           {stories.length > 0 ? (
             stories.map((story, i) => <StoryCard key={i} story={story} />)
           ) : (
@@ -48,4 +54,4 @@ async function Discover() {
   );
 }
 
-export default Discover;
+export default Library;
