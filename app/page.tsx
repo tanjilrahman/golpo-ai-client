@@ -54,7 +54,7 @@ function Discover() {
           {stories.length > 0
             ? stories.map((story, i) => <StoryCard key={i} story={story} />)
             : [...Array(8)].map((e, i) => (
-                <Skeleton className="aspect-square rounded-3xl" />
+                <Skeleton key={i} className="aspect-square rounded-3xl" />
               ))}
         </div>
       </div>
