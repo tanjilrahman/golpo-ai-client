@@ -7,9 +7,9 @@ import {
 } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { dark } from "@clerk/themes";
+import { useRouter } from "../useRouter";
 
 function RegisterModal() {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();

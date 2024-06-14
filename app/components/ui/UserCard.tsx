@@ -13,7 +13,7 @@ import { HiOutlineLogout } from "react-icons/hi";
 import { MdOutlineManageAccounts } from "react-icons/md";
 
 import { FiInfo } from "react-icons/fi";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/app/useRouter";
 
 export const UserCard = () => {
   const { user } = useUser();

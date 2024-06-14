@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { Button, Card, CardBody } from "@nextui-org/react";
 import { useAuth } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
 import SideBar from "../components/SideBar";
 import { Textarea } from "@nextui-org/react";
 import { PiMagicWand } from "react-icons/pi";
@@ -12,9 +11,9 @@ import Image from "next/image";
 import MoreOptions from "../components/MoreOptions";
 import { SuggestedPlot } from "@/types";
 import GenerationProgress from "../components/GenerationProgress";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import PlotCardSkeleton from "../components/ui/PlotCardSkeleton";
-import MiniHeader from "../components/ui/MiniHeader";
+import { useRouter } from "../useRouter";
 
 function Golpo() {
   const { userId, getToken } = useAuth();

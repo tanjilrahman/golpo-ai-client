@@ -8,7 +8,10 @@ import React from "react";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import SuperStory from "@/app/components/SuperStory";
 import AudioPlayer from "@/app/components/AudioPlayer";
+import DeleteButton from "@/app/components/DeleteButton";
+import { auth } from "@clerk/nextjs/server";
 async function GolpoPage({ params }: { params: { id: string } }) {
+  const { userId } = auth();
   dayjs.extend(localizedFormat);
   const response = await fetch(
     process.env.NEXT_PUBLIC_API_URL + "/api/story/" + params.id
@@ -46,7 +49,9 @@ async function GolpoPage({ params }: { params: { id: string } }) {
               />
               <div className="mt-3 items-center gap-2 md:gap-3 flex md:mt-0">
                 <AudioPlayer storyId={params.id} url={story.audioUrl || ""} />
-                <Button className="rounded-full">Share</Button>
+                {story.authorId === userId && (
+                  <DeleteButton storyId={params.id} />
+                )}
               </div>
             </div>
             <h3 className="my-2 md:my-6 text-4xl lg:text-5xl xl:text-6xl font-semibold">

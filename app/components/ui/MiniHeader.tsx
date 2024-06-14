@@ -1,5 +1,5 @@
+import { useRouter } from "@/app/useRouter";
 import { Button } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
 import React, { Dispatch, SetStateAction } from "react";
 import { RiAiGenerate } from "react-icons/ri";
 import {

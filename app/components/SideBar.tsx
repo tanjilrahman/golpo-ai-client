@@ -18,7 +18,6 @@ import { PiMagicWandDuotone } from "react-icons/pi";
 import { UserCard } from "./ui/UserCard";
 import { MdOutlineFaceUnlock } from "react-icons/md";
 import { ThemeSwitcher } from "./ui/ThemeSwitcher";
-import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import {
   TbLayoutSidebarLeftCollapseFilled,
@@ -29,6 +28,7 @@ import MiniHeader from "./ui/MiniHeader";
 import toast from "react-hot-toast";
 import { MdVpnKey } from "react-icons/md";
 import RegisterModal from "./RegisterModal";
+import { useRouter } from "../useRouter";
 
 function SideBar({ pathname }: { pathname: string }) {
   const { user, isLoaded } = useUser();
@@ -213,7 +213,7 @@ function SideBar({ pathname }: { pathname: string }) {
                 <Button
                   onClick={() => router.push("?m=signin")}
                   className={`${
-                    pathname === ""
+                    pathname === "/signin"
                       ? "bg-secondary text-white"
                       : " bg-transparent hover:bg-secondary-100"
                   } items-center w-full flex justify-start py-[22px] mt-1`}
