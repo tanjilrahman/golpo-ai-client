@@ -1,24 +1,31 @@
+"use client";
+
 import { Author, Story } from "@/types";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import StoryCard from "./components/StoryCard";
 import SideBar from "./components/SideBar";
+import { Skeleton } from "@nextui-org/react";
 
-async function Discover() {
-  const response = await fetch(
-    process.env.NEXT_PUBLIC_API_URL + "/api/stories/all",
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  const data = await response.json();
-  const stories: (Story & Author)[] = data.stories;
-  console.log(data);
-
-  if (!data.success) return <p>{data.message}</p>;
+function Discover() {
+  const [stories, setStories] = useState<(Story & Author)[]>([]);
+  useEffect(() => {
+    const fetchStories = async () => {
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_API_URL + "/api/stories/all",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      const stories: (Story & Author)[] = data.stories;
+      setStories(stories);
+    };
+    fetchStories();
+  }, []);
 
   return (
     <div className="flex">
@@ -44,11 +51,11 @@ async function Discover() {
           </p>
         </div>
         <div className="grid grid-cols-2 gap-4 md:gap-6 lg:gap-8 mb-10 md:grid-cols-3 mx-6 xl:grid-cols-4 md:mx-10">
-          {stories.length > 0 ? (
-            stories.map((story, i) => <StoryCard key={i} story={story} />)
-          ) : (
-            <p>No Stories Found!</p>
-          )}
+          {stories.length > 0
+            ? stories.map((story, i) => <StoryCard key={i} story={story} />)
+            : [...Array(8)].map((e, i) => (
+                <Skeleton className="aspect-square rounded-3xl" />
+              ))}
         </div>
       </div>
     </div>
