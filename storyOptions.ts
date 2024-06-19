@@ -52,7 +52,7 @@ export const storyTypes = [
   {
     label: "Bedtime Story",
     value: "bedtime-story",
-    description: "",
+    description: "Dreamy, encourages children to go to sleep and the readers.",
   },
   {
     label: "Fable",
@@ -88,6 +88,11 @@ export const storyTypes = [
     label: "Realistic fiction",
     value: "realistic-fiction",
     description: "Everyday life. relatable characters, emotions.",
+  },
+  {
+    label: "Horror",
+    value: "horror",
+    description: "Chilling, suspenseful, thrilling scares.",
   },
 ];
 
@@ -131,5 +136,10 @@ export const writingStyles = [
     label: "Educational",
     value: "educational",
     description: "Informative, engaging, age-appropriate lessons.",
+  },
+  {
+    label: "Horror",
+    value: "horror",
+    description: "Intense, creepy, spine-tingling.",
   },
 ];
